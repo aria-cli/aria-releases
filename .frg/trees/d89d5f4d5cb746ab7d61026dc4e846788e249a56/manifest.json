@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "base_relative_path": "trees/d89d5f4d5cb746ab7d61026dc4e846788e249a56",
+  "commit_hash": "433ed1b0d6ae5d86e4bbaba7d51904dda78713cf",
+  "tree_hash": "d89d5f4d5cb746ab7d61026dc4e846788e249a56",
+  "segments": [],
+  "compacted_overlay_relative_path": null,
+  "compacted_overlay_start_file_id": null,
+  "compacted_overlay_file_count": null,
+  "compacted_overlay_ngram_count": null,
+  "compacted_overlay_tombstone_count": null,
+  "next_overlay_file_id": 2,
+  "updated_at": 1775096781
+}

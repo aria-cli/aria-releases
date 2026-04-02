@@ -1,21 +1,49 @@
-# ARIA CLI
+# ARIA — AI Coding Assistant
 
-AI coding assistant that runs in your terminal.
+**Superintelligent CLI that gets smarter with every interaction.**
+
+Persistent memory, self-learning tools, knowledge graph, multi-model routing, autonomous agent loop — all in your terminal.
 
 ## Install
 
+### Standalone Binary (recommended)
+
+No Node.js, npm, or bun required. Just download and run.
+
 ```sh
-# Recommended — standalone binary (no Node.js required)
 curl -fsSL https://raw.githubusercontent.com/aria-cli/aria-releases/main/install.sh | sh
+```
 
-# Or via npm
+Supports:
+- macOS (Apple Silicon + Intel)
+- Linux (x64 + arm64)
+
+### npm
+
+```sh
 npm i -g @aria-cli/cli
+```
 
-# Or via bun
+### bun
+
+```sh
 bun install -g @aria-cli/cli
 ```
 
-## Supported Platforms
+## Usage
+
+```sh
+# Start interactive REPL
+aria
+
+# One-shot query
+aria "explain this codebase"
+
+# Check version
+aria --version
+```
+
+## Platforms
 
 | Platform | Architecture | Binary |
 |----------|-------------|--------|
@@ -24,8 +52,30 @@ bun install -g @aria-cli/cli
 | Linux | x64 | `aria-linux-x64` |
 | Linux | arm64 | `aria-linux-arm64` |
 
-## Verify Installation
+## Manual Download
+
+Download binaries directly from [Releases](https://github.com/aria-cli/aria-releases/releases):
 
 ```sh
-aria --version
+# macOS Apple Silicon
+curl -fsSL -o aria https://github.com/aria-cli/aria-releases/releases/latest/download/aria-darwin-arm64
+chmod +x aria
+./aria --version
 ```
+
+## Uninstall
+
+```sh
+rm ~/.local/bin/aria
+```
+
+Or if installed via npm:
+
+```sh
+npm uninstall -g @aria-cli/cli
+```
+
+## Links
+
+- [npm](https://www.npmjs.com/package/@aria-cli/cli)
+- [Releases](https://github.com/aria-cli/aria-releases/releases)
