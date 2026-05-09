@@ -95,3 +95,31 @@ case ":$PATH:" in
   *":$INSTALL_DIR:"*) ;;
   *) echo "Add to PATH: export PATH=\"$INSTALL_DIR:\$PATH\"" ;;
 esac
+
+# ─── One-time firewall setup hint ──────────────────────────────────────────
+# ARIA's pairing and WireGuard tunnel use two fixed ports (stable across
+# daemon restarts):
+#   • TCP 51822 — pairing control endpoint
+#   • UDP 58291 — WireGuard data plane
+#
+# On cloud VMs with restrictive inbound firewalls (Hetzner, Oracle, DO), a
+# peer trying to join this host won't be able to reach those ports without
+# one of the rules below. Ignore if you're only using ARIA locally, or if
+# this host isn't a pairing leader.
+case "$(uname -s)" in
+  Linux)
+    if [ "$(id -u)" = "0" ]; then
+      # Root install — suggest the rule but don't auto-apply. We never
+      # touch firewalls without explicit operator intent.
+      echo
+      echo "To accept remote pairing, open these ports on this host (one-time setup):"
+      echo "  sudo iptables -I INPUT -p tcp --dport 51822 -j ACCEPT"
+      echo "  sudo iptables -I INPUT -p udp --dport 58291 -j ACCEPT"
+      echo "  (run 'aria daemon status' once the daemon is up to see the effective ports)"
+    fi
+    ;;
+  Darwin)
+    # Firewall is off by default on most macOS hosts. Only mention if
+    # this is a headless server variant where it's on.
+    ;;
+esac
